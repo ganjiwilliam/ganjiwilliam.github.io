@@ -4,11 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>William Ganji — Computer Engineering</title>
-<meta name="description" content="Computer Engineering student at Texas A&M — ASIC design, verification, and embedded systems.">
+<meta name="description" content="Computer Engineering MS student at Texas A&M and embedded software engineer — ASIC design, verification, and embedded systems.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<noscript><style>.card,.skill-group,.section-head{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
 
@@ -16,7 +17,9 @@
   <div class="nav-inner">
     <a href="#top" class="brand">WG<span class="dot">.</span></a>
     <nav>
+      <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
+      <a href="#education">Education</a>
       <a href="#skills">Skills</a>
       <a href="#contact">Contact</a>
       <button id="theme-toggle" aria-label="Toggle color theme">🌙</button>
@@ -28,7 +31,7 @@
 
   <!-- ===== HERO ===== -->
   <section class="hero" id="top">
-    <p class="eyebrow">Texas A&amp;M University</p>
+    <p class="eyebrow">MS Computer Engineering · Texas A&amp;M University</p>
     <h1>William Ganji</h1>
     <h2 class="tagline">
       Computer Engineering student deeply interested in
@@ -36,13 +39,76 @@
       expertise in <span class="hl">embedded systems</span>.
     </h2>
     <p class="hero-sub">
-      I work across the stack that hardware actually lives on — RTL and UVM
-      testbenches on one end, bare-metal firmware and microarchitecture
-      simulation on the other.
+      Four years of embedded software engineering at Analog Devices — bare-metal
+      and FreeRTOS firmware for precision ADCs and metrology DSPs — now focused on
+      RTL design, UVM verification, and microarchitecture.
     </p>
     <div class="hero-actions">
       <a class="btn primary" href="#projects">View Projects</a>
-      <a class="btn" href="https://github.com/ganjiwilliam" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="#contact">Get in Touch</a>
+    </div>
+  </section>
+
+  <!-- ===== EXPERIENCE ===== -->
+  <section id="experience">
+    <div class="section-head">
+      <h2 class="section-title">Experience</h2>
+    </div>
+
+    <div class="timeline">
+
+      <article class="card exp">
+        <div class="exp-head">
+          <div>
+            <h3>Embedded Software Engineer</h3>
+            <p class="company">Analog Devices India Pvt. Ltd. · Bangalore, India</p>
+          </div>
+          <span class="date">May 2025 – Jun 2026</span>
+        </div>
+        <ul>
+          <li>Developed bare-metal and FreeRTOS evaluation firmware for the <strong>ADEMA127 24-bit ∆Σ ADC</strong>, targeting polyphase and split-phase energy metering.</li>
+          <li>Built a customer-facing GUI leveraging Analog Devices ACE software for register access, real-time waveform capture, and FFT/histogram analysis.</li>
+          <li>Mentored interns on project deliverables, accelerating onboarding and providing technical oversight to sustain team productivity.</li>
+        </ul>
+        <div class="tags">
+          <span>Bare-metal C</span><span>FreeRTOS</span><span>∆Σ ADC</span><span>ADI ACE</span><span>FFT Analysis</span>
+        </div>
+      </article>
+
+      <article class="card exp">
+        <div class="exp-head">
+          <div>
+            <h3>Associate Software Engineer</h3>
+            <p class="company">Analog Devices India Pvt. Ltd. · Bangalore, India</p>
+          </div>
+          <span class="date">May 2022 – Apr 2025</span>
+        </div>
+        <ul>
+          <li>Engineered portable embedded applications across <strong>STM32F413ZHT6, STM32L552ZE, STM32H573ZI, and MAX32670</strong> MCUs via platform-agnostic peripheral drivers and custom toolchain scripts.</li>
+          <li>Set up <strong>ADE9178</strong> metrology DSP test infrastructure in Python to validate algorithms against IEC standards, interfacing an NI PXIe-4463 DAQ for low-voltage and low-current signal generation.</li>
+        </ul>
+        <div class="tags">
+          <span>Embedded C</span><span>Python</span><span>STM32</span><span>MAX32670</span><span>IEC Standards</span><span>NI PXIe</span>
+        </div>
+      </article>
+
+      <article class="card exp">
+        <div class="exp-head">
+          <div>
+            <h3>Embedded Software Intern</h3>
+            <p class="company">Analog Devices India Pvt. Ltd. · Bangalore, India</p>
+          </div>
+          <span class="date">Jul 2021 – May 2022</span>
+        </div>
+        <ul>
+          <li>Architected CI/CD pipelines for firmware builds, regression test execution, and release delivery.</li>
+          <li>Automated validation for ADI Eagle.</li>
+        </ul>
+        <div class="tags">
+          <span>CI/CD</span><span>Test Automation</span><span>Regression Testing</span>
+        </div>
+      </article>
+
     </div>
   </section>
 
@@ -59,7 +125,6 @@
 
     <div class="grid">
 
-      <!-- ---- DIGITAL DESIGN & VERIFICATION ---- -->
       <article class="card" data-cat="ddv">
         <div class="card-top">
           <span class="badge ddv">Digital Design &amp; Verification</span>
@@ -68,9 +133,9 @@
         <h3>Canny Edge Detector Integrated with System Bus, Memory &amp; UART</h3>
         <p class="blurb">A complete image-processing SoC pipeline built around a hardware edge-detection accelerator.</p>
         <ul>
-          <li>Integrated a Verilog-based Canny edge detector accelerator with a custom system bus, SRAM memory, and a UART transmitter to form a full image-processing SoC pipeline.</li>
-          <li>Modeled transistor-level schematics in LTspice targeting a standard 180&nbsp;nm process node for transient design verification.</li>
-          <li>Validated output accuracy at every pipeline stage — Gaussian smoothing, gradient, direction, non-maximum suppression, and hysteresis — against reference images, achieving a <strong>98.28% pixel-level match</strong> across five test images.</li>
+          <li>Integrated a Verilog-based Canny edge detector accelerator with a custom system bus, SRAM memory, and UART transmitter to form a complete image-processing SoC pipeline [1].</li>
+          <li>Modeled transistor-level schematics in LTspice targeting standard 180&nbsp;nm process nodes for transient design verification [1].</li>
+          <li>Validated output accuracy at each pipeline stage — Gaussian smoothing, gradient, direction, NMS, hysteresis — against reference images, achieving <strong>98.28% pixel-level matching</strong> across five test images [1].</li>
         </ul>
         <div class="tags">
           <span>Verilog</span><span>Synopsys Design Vision</span><span>LTspice</span><span>SoC Integration</span><span>UART</span>
@@ -82,56 +147,8 @@
           <span class="badge ddv">Digital Design &amp; Verification</span>
           <span class="date">Sept 2026 – Oct 2026</span>
         </div>
-        <h3>HTAX Crossbar Verification</h3>
+        <h3>HTAX Verification Project</h3>
         <p class="blurb">UVM testbench and assertion suite for a 4-port HyperTransport Advanced X-Bar.</p>
         <ul>
-          <li>Authored a UVM testbench verifying a 4-port HyperTransport Advanced X-Bar (HTAX) architecture.</li>
-          <li>Formulated SystemVerilog Assertions validating concurrent TX/RX interface transactions, evaluating grant mechanisms and testing the minimum-latency feature.</li>
-          <li>Executed functional coverage models with constrained-random sequences, achieving <strong>100% verification closure</strong>.</li>
-        </ul>
-        <div class="tags">
-          <span>SystemVerilog</span><span>UVM</span><span>SVA</span><span>Functional Coverage</span><span>Constrained Random</span>
-        </div>
-      </article>
-
-      <article class="card" data-cat="ddv">
-        <div class="card-top">
-          <span class="badge ddv">Digital Design &amp; Verification</span>
-          <span class="date">Dec 2020 – Feb 2021</span>
-        </div>
-        <h3>2:4 Decoder Using Mixed CMOS Logic</h3>
-        <p class="blurb">Low-power 14T decoder topology combining transmission gate and dual-value logic at 32&nbsp;nm.</p>
-        <ul>
-          <li>Led a 3-member team to engineer 14T low-power, high-performance 2:4 decoders using transmission gate logic (TGL) and dual-value logic (DVL).</li>
-          <li>Simulated the mixed-logic topology at 32&nbsp;nm across multiple frequencies and supply rails to evaluate power–delay trade-offs.</li>
-          <li>Decreased power dissipation by <strong>16.41%</strong> and propagation delay by <strong>47.06%</strong> relative to conventional CMOS benchmarks.</li>
-        </ul>
-        <div class="tags">
-          <span>Mentor Graphics</span><span>32nm CMOS</span><span>TGL / DVL</span><span>Power–Delay Analysis</span>
-        </div>
-      </article>
-
-      <!-- ---- EMBEDDED SYSTEMS ---- -->
-      <article class="card" data-cat="emb">
-        <div class="card-top">
-          <span class="badge emb">Embedded Systems</span>
-          <span class="date">Oct 2026</span>
-        </div>
-        <h3>Dynamic Cache Replacement Policy Simulator</h3>
-        <p class="blurb">LIP, BIP, and DIP replacement policies implemented and benchmarked in ChampSim.</p>
-        <ul>
-          <li>Implemented LIP, BIP, and DIP as custom C++ replacement modules in the ChampSim simulator across 5 real-world workloads, each over 100M instructions following a 25M-instruction warmup.</li>
-          <li>Achieved up to <strong>+21.4% IPC speedup</strong> over baseline LRU using BIP, and <strong>+15.0%</strong> using DIP.</li>
-          <li>Computed geometric-mean IPC speedup across all workloads, showing DIP (+0.45%) and BIP (+1.60%) outperformed LRU with no offline tuning required.</li>
-        </ul>
-        <div class="tags">
-          <span>ChampSim</span><span>C++ / STL</span><span>Computer Architecture</span><span>Cache Microarchitecture</span>
-        </div>
-      </article>
-
-      <article class="card" data-cat="emb">
-        <div class="card-top">
-          <span class="badge emb">Embedded Systems</span>
-          <span class="date">Mar 2020 – Apr 2020</span>
-        </div>
-        <h3>Real-Time
+          <li>Authored a UVM testbench verifying a 4-port HyperTransport Advanced X-Bar (HTAX) architecture [1].</li>
+          <li>Formulated SystemVerilog Assertions validating concurrent TX/RX interface transactions, evaluating grant
