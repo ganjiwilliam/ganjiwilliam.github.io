@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>William Ganji — Computer Engineering</title>
+<meta name="description" content="Computer Engineering student at Texas A&M — ASIC design, verification, and embedded systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">WG<span class="dot">.</span></a>
+    <nav>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+      <button id="theme-toggle" aria-label="Toggle color theme">🌙</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="top">
+    <p class="eyebrow">Texas A&amp;M University</p>
+    <h1>William Ganji</h1>
+    <h2 class="tagline">
+      Computer Engineering student deeply interested in
+      <span class="hl">ASIC design and verification</span>, while deepening my
+      expertise in <span class="hl">embedded systems</span>.
+    </h2>
+    <p class="hero-sub">
+      I work across the stack that hardware actually lives on — RTL and UVM
+      testbenches on one end, bare-metal firmware and microarchitecture
+      simulation on the other.
+    </p>
+    <div class="hero-actions">
+      <a class="btn primary" href="#projects">View Projects</a>
+      <a class="btn" href="https://github.com/ganjiwilliam" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section id="projects">
+    <div class="section-head">
+      <h2 class="section-title">Projects</h2>
+      <div class="filters" role="tablist">
+        <button class="filter active" data-filter="all">All</button>
+        <button class="filter" data-filter="ddv">Digital Design &amp; Verification</button>
+        <button class="filter" data-filter="emb">Embedded Systems</button>
+      </div>
+    </div>
+
+    <div class="grid">
+
+      <!-- ---- DIGITAL DESIGN & VERIFICATION ---- -->
+      <article class="card" data-cat="ddv">
+        <div class="card-top">
+          <span class="badge ddv">Digital Design &amp; Verification</span>
+          <span class="date">Oct 2026</span>
+        </div>
+        <h3>Canny Edge Detector Integrated with System Bus, Memory &amp; UART</h3>
+        <p class="blurb">A complete image-processing SoC pipeline built around a hardware edge-detection accelerator.</p>
+        <ul>
+          <li>Integrated a Verilog-based Canny edge detector accelerator with a custom system bus, SRAM memory, and a UART transmitter to form a full image-processing SoC pipeline.</li>
+          <li>Modeled transistor-level schematics in LTspice targeting a standard 180&nbsp;nm process node for transient design verification.</li>
+          <li>Validated output accuracy at every pipeline stage — Gaussian smoothing, gradient, direction, non-maximum suppression, and hysteresis — against reference images, achieving a <strong>98.28% pixel-level match</strong> across five test images.</li>
+        </ul>
+        <div class="tags">
+          <span>Verilog</span><span>Synopsys Design Vision</span><span>LTspice</span><span>SoC Integration</span><span>UART</span>
+        </div>
+      </article>
+
+      <article class="card" data-cat="ddv">
+        <div class="card-top">
+          <span class="badge ddv">Digital Design &amp; Verification</span>
+          <span class="date">Sept 2026 – Oct 2026</span>
+        </div>
+        <h3>HTAX Crossbar Verification</h3>
+        <p class="blurb">UVM testbench and assertion suite for a 4-port HyperTransport Advanced X-Bar.</p>
+        <ul>
+          <li>Authored a UVM testbench verifying a 4-port HyperTransport Advanced X-Bar (HTAX) architecture.</li>
+          <li>Formulated SystemVerilog Assertions validating concurrent TX/RX interface transactions, evaluating grant mechanisms and testing the minimum-latency feature.</li>
+          <li>Executed functional coverage models with constrained-random sequences, achieving <strong>100% verification closure</strong>.</li>
+        </ul>
+        <div class="tags">
+          <span>SystemVerilog</span><span>UVM</span><span>SVA</span><span>Functional Coverage</span><span>Constrained Random</span>
+        </div>
+      </article>
+
+      <article class="card" data-cat="ddv">
+        <div class="card-top">
+          <span class="badge ddv">Digital Design &amp; Verification</span>
+          <span class="date">Dec 2020 – Feb 2021</span>
+        </div>
+        <h3>2:4 Decoder Using Mixed CMOS Logic</h3>
+        <p class="blurb">Low-power 14T decoder topology combining transmission gate and dual-value logic at 32&nbsp;nm.</p>
+        <ul>
+          <li>Led a 3-member team to engineer 14T low-power, high-performance 2:4 decoders using transmission gate logic (TGL) and dual-value logic (DVL).</li>
+          <li>Simulated the mixed-logic topology at 32&nbsp;nm across multiple frequencies and supply rails to evaluate power–delay trade-offs.</li>
+          <li>Decreased power dissipation by <strong>16.41%</strong> and propagation delay by <strong>47.06%</strong> relative to conventional CMOS benchmarks.</li>
+        </ul>
+        <div class="tags">
+          <span>Mentor Graphics</span><span>32nm CMOS</span><span>TGL / DVL</span><span>Power–Delay Analysis</span>
+        </div>
+      </article>
+
+      <!-- ---- EMBEDDED SYSTEMS ---- -->
+      <article class="card" data-cat="emb">
+        <div class="card-top">
+          <span class="badge emb">Embedded Systems</span>
+          <span class="date">Oct 2026</span>
+        </div>
+        <h3>Dynamic Cache Replacement Policy Simulator</h3>
+        <p class="blurb">LIP, BIP, and DIP replacement policies implemented and benchmarked in ChampSim.</p>
+        <ul>
+          <li>Implemented LIP, BIP, and DIP as custom C++ replacement modules in the ChampSim simulator across 5 real-world workloads, each over 100M instructions following a 25M-instruction warmup.</li>
+          <li>Achieved up to <strong>+21.4% IPC speedup</strong> over baseline LRU using BIP, and <strong>+15.0%</strong> using DIP.</li>
+          <li>Computed geometric-mean IPC speedup across all workloads, showing DIP (+0.45%) and BIP (+1.60%) outperformed LRU with no offline tuning required.</li>
+        </ul>
+        <div class="tags">
+          <span>ChampSim</span><span>C++ / STL</span><span>Computer Architecture</span><span>Cache Microarchitecture</span>
+        </div>
+      </article>
+
+      <article class="card" data-cat="emb">
+        <div class="card-top">
+          <span class="badge emb">Embedded Systems</span>
+          <span class="date">Mar 2020 – Apr 2020</span>
+        </div>
+        <h3>Real-Time
