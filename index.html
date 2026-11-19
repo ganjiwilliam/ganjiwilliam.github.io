@@ -1,154 +1,902 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>William Ganji — Computer Engineering</title>
-<meta name="description" content="Computer Engineering MS student at Texas A&M and embedded software engineer — ASIC design, verification, and embedded systems.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<noscript><style>.card,.skill-group,.section-head{opacity:1!important;transform:none!important}</style></noscript>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>William Ganji — Computer Engineering Portfolio</title>
+  <meta name="description" content="William Ganji — MS Computer Engineering at Texas A&M University. ASIC Design, Hardware Verification, Computer Architecture, and Embedded Systems." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #070b14;
+      --bg-elevated: #0e1525;
+      --bg-card: rgba(17, 24, 39, 0.72);
+      --border: rgba(148, 163, 184, 0.14);
+      --border-hover: rgba(0, 200, 255, 0.42);
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --accent: #00c8ff;
+      --accent-soft: rgba(0, 200, 255, 0.12);
+      --accent-2: #6366f1;
+      --green: #22c55e;
+      --radius: 14px;
+      --max-w: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.65;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 15% 10%, rgba(0, 200, 255, 0.09), transparent 35%),
+        radial-gradient(circle at 85% 25%, rgba(99, 102, 241, 0.08), transparent 40%),
+        var(--bg);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ===== NAVBAR ===== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      background: rgba(7, 11, 20, 0.78);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-container {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .brand span {
+      color: var(--accent);
+    }
+
+    nav {
+      display: flex;
+      gap: 1.6rem;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: var(--accent);
+    }
+
+    .menu-btn {
+      display: none;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.4rem 0.65rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 6rem 1.5rem 4.5rem;
+    }
+
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(90deg, var(--accent), #818cf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-desc {
+      max-width: 680px;
+      font-size: 1.08rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.72rem 1.35rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.94rem;
+      text-decoration: none;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #04101c;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 200, 255, 0.28);
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      background: rgba(34, 197, 94, 0.08);
+      border: 1px solid rgba(34, 197, 94, 0.25);
+      padding: 0.42rem 0.9rem;
+      border-radius: 999px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 8px var(--green);
+    }
+
+    /* ===== MAIN SECTIONS ===== */
+    main {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 1.5rem 5rem;
+    }
+
+    section {
+      padding: 4rem 0 1rem;
+    }
+
+    .section-header {
+      margin-bottom: 2rem;
+    }
+
+    .section-header h2 {
+      font-size: 1.85rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      max-width: 660px;
+      font-size: 0.98rem;
+    }
+
+    /* ===== EXPERIENCE TIMELINE ===== */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      border-left: 2px solid var(--border);
+      padding-left: 1.5rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+    }
+
+    .exp-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .exp-top h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .exp-company {
+      color: var(--accent);
+      font-size: 0.94rem;
+      font-weight: 500;
+    }
+
+    .date-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      background: rgba(148, 163, 184, 0.08);
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    .card ul {
+      padding-left: 1.2rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .card li {
+      margin-bottom: 0.5rem;
+    }
+
+    .card li strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* ===== PROJECTS ===== */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .filter-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.45rem 0.95rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.75rem;
+      gap: 0.5rem;
+    }
+
+    .cat-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 0.22rem 0.6rem;
+      border-radius: 6px;
+      text-transform: uppercase;
+    }
+
+    .project-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      line-height: 1.35;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      margin-top: 1rem;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .tags span {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+    }
+
+    /* ===== SKILLS (NUMBERED CARDS) ===== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .skill-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .skill-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--accent);
+      background: var(--accent-soft);
+      padding: 0.35rem 0.55rem;
+      border-radius: 8px;
+    }
+
+    .skill-head h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .skill-head p {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    /* ===== EDUCATION ===== */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .edu-degree {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.96rem;
+      margin-top: 0.2rem;
+    }
+
+    .edu-loc {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .course-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin: 1rem 0 0.6rem;
+    }
+
+    .course-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      list-style: none;
+      padding: 0 !important;
+    }
+
+    .course-pills li {
+      font-size: 0.82rem;
+      color: var(--text);
+      background: rgba(148, 163, 184, 0.08);
+      border: 1px solid var(--border);
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      margin: 0;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact-box {
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+    }
+
+    .contact-box p {
+      color: var(--text-muted);
+      max-width: 560px;
+      margin: 0.6rem auto 1.6rem;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      color: var(--text-muted);
+      font-size: 0.86rem;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 720px) {
+      .menu-btn {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: rgba(7, 11, 20, 0.96);
+        border-bottom: 1px solid var(--border);
+        padding: 1rem 1.5rem;
+        gap: 1rem;
+      }
+
+      nav.open {
+        display: flex;
+      }
+
+      .hero {
+        padding-top: 4rem;
+      }
+
+      .timeline {
+        padding-left: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<header class="nav">
-  <div class="nav-inner">
-    <a href="#top" class="brand">WG<span class="dot">.</span></a>
-    <nav>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#education">Education</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-      <button id="theme-toggle" aria-label="Toggle color theme">🌙</button>
-    </nav>
-  </div>
-</header>
-
-<main>
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="nav-container">
+      <a href="#top" class="brand">WG<span>.</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">☰</button>
+      <nav id="navMenu">
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
   <!-- ===== HERO ===== -->
   <section class="hero" id="top">
-    <p class="eyebrow">MS Computer Engineering · Texas A&amp;M University</p>
-    <h1>William Ganji</h1>
-    <h2 class="tagline">
-      Computer Engineering student deeply interested in
-      <span class="hl">ASIC design and verification</span>, while deepening my
-      expertise in <span class="hl">embedded systems</span>.
-    </h2>
-    <p class="hero-sub">
-      Four years of embedded software engineering at Analog Devices — bare-metal
-      and FreeRTOS firmware for precision ADCs and metrology DSPs — now focused on
-      RTL design, UVM verification, and microarchitecture.
+    <p class="eyebrow">ASIC Design &amp; Verification · Computer Architecture · Embedded Systems</p>
+    <h1>William Ganji<br /><span>from silicon to firmware</span></h1>
+    <p class="hero-desc">
+      MS Computer Engineering student at Texas A&amp;M University with four years of industry experience at Analog Devices building bare-metal and FreeRTOS firmware for precision ADCs and metrology DSPs—now focused on RTL design, UVM verification, and computer architecture.
     </p>
     <div class="hero-actions">
-      <a class="btn primary" href="#projects">View Projects</a>
-      <a class="btn" href="#contact">Get in Touch</a>
+      <a href="#projects" class="btn btn-primary">Explore Projects</a>
+      <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+    </div>
+    <div class="status-pill">
+      <span class="status-dot"></span>
+      Open to Summer 2027 Internships (Digital IC Design · DV · Embedded/Firmware)
     </div>
   </section>
 
-  <!-- ===== EXPERIENCE ===== -->
-  <section id="experience">
-    <div class="section-head">
-      <h2 class="section-title">Experience</h2>
-    </div>
-
-    <div class="timeline">
-
-      <article class="card exp">
-        <div class="exp-head">
-          <div>
-            <h3>Embedded Software Engineer</h3>
-            <p class="company">Analog Devices India Pvt. Ltd. · Bangalore, India</p>
-          </div>
-          <span class="date">May 2025 – Jun 2026</span>
-        </div>
-        <ul>
-          <li>Developed bare-metal and FreeRTOS evaluation firmware for the <strong>ADEMA127 24-bit ∆Σ ADC</strong>, targeting polyphase and split-phase energy metering.</li>
-          <li>Built a customer-facing GUI leveraging Analog Devices ACE software for register access, real-time waveform capture, and FFT/histogram analysis.</li>
-          <li>Mentored interns on project deliverables, accelerating onboarding and providing technical oversight to sustain team productivity.</li>
-        </ul>
-        <div class="tags">
-          <span>Bare-metal C</span><span>FreeRTOS</span><span>∆Σ ADC</span><span>ADI ACE</span><span>FFT Analysis</span>
-        </div>
-      </article>
-
-      <article class="card exp">
-        <div class="exp-head">
-          <div>
-            <h3>Associate Software Engineer</h3>
-            <p class="company">Analog Devices India Pvt. Ltd. · Bangalore, India</p>
-          </div>
-          <span class="date">May 2022 – Apr 2025</span>
-        </div>
-        <ul>
-          <li>Engineered portable embedded applications across <strong>STM32F413ZHT6, STM32L552ZE, STM32H573ZI, and MAX32670</strong> MCUs via platform-agnostic peripheral drivers and custom toolchain scripts.</li>
-          <li>Set up <strong>ADE9178</strong> metrology DSP test infrastructure in Python to validate algorithms against IEC standards, interfacing an NI PXIe-4463 DAQ for low-voltage and low-current signal generation.</li>
-        </ul>
-        <div class="tags">
-          <span>Embedded C</span><span>Python</span><span>STM32</span><span>MAX32670</span><span>IEC Standards</span><span>NI PXIe</span>
-        </div>
-      </article>
-
-      <article class="card exp">
-        <div class="exp-head">
-          <div>
-            <h3>Embedded Software Intern</h3>
-            <p class="company">Analog Devices India Pvt. Ltd. · Bangalore, India</p>
-          </div>
-          <span class="date">Jul 2021 – May 2022</span>
-        </div>
-        <ul>
-          <li>Architected CI/CD pipelines for firmware builds, regression test execution, and release delivery.</li>
-          <li>Automated validation for ADI Eagle.</li>
-        </ul>
-        <div class="tags">
-          <span>CI/CD</span><span>Test Automation</span><span>Regression Testing</span>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- ===== PROJECTS ===== -->
-  <section id="projects">
-    <div class="section-head">
-      <h2 class="section-title">Projects</h2>
-      <div class="filters" role="tablist">
-        <button class="filter active" data-filter="all">All</button>
-        <button class="filter" data-filter="ddv">Digital Design &amp; Verification</button>
-        <button class="filter" data-filter="emb">Embedded Systems</button>
+  <main>
+    <!-- ===== EXPERIENCE ===== -->
+    <section id="experience">
+      <div class="section-header">
+        <h2>Experience</h2>
+        <p>Four years shipping production embedded firmware, hardware validation infrastructure, and CI/CD automation at Analog Devices.</p>
       </div>
-    </div>
 
-    <div class="grid">
+      <div class="timeline">
+        <article class="card">
+          <div class="exp-top">
+            <div>
+              <h3>Embedded Software Engineer</h3>
+              <p class="exp-company">Analog Devices India Pvt. Ltd. · Bangalore, India</p>
+            </div>
+            <span class="date-badge">May 2025 – Jun 2026</span>
+          </div>
+          <ul>
+            <li>Developed bare-metal and FreeRTOS evaluation firmware for the <strong>ADEMA127 24-bit ∆Σ ADC</strong> targeting polyphase and split-phase energy metering.</li>
+            <li>Built a customer-facing GUI leveraging <strong>Analog Devices ACE</strong> software for register access, real-time waveform capture, and FFT/histogram analysis.</li>
+            <li>Mentored interns on project deliverables, accelerating their onboarding and providing technical oversight to sustain team productivity.</li>
+          </ul>
+          <div class="tags">
+            <span>Bare-metal C</span><span>FreeRTOS</span><span>ADEMA127 ∆Σ ADC</span><span>ADI ACE</span><span>FFT Analysis</span>
+          </div>
+        </article>
 
-      <article class="card" data-cat="ddv">
-        <div class="card-top">
-          <span class="badge ddv">Digital Design &amp; Verification</span>
-          <span class="date">Oct 2026</span>
-        </div>
-        <h3>Canny Edge Detector Integrated with System Bus, Memory &amp; UART</h3>
-        <p class="blurb">A complete image-processing SoC pipeline built around a hardware edge-detection accelerator.</p>
-        <ul>
-          <li>Integrated a Verilog-based Canny edge detector accelerator with a custom system bus, SRAM memory, and UART transmitter to form a complete image-processing SoC pipeline [1].</li>
-          <li>Modeled transistor-level schematics in LTspice targeting standard 180&nbsp;nm process nodes for transient design verification [1].</li>
-          <li>Validated output accuracy at each pipeline stage — Gaussian smoothing, gradient, direction, NMS, hysteresis — against reference images, achieving <strong>98.28% pixel-level matching</strong> across five test images [1].</li>
-        </ul>
-        <div class="tags">
-          <span>Verilog</span><span>Synopsys Design Vision</span><span>LTspice</span><span>SoC Integration</span><span>UART</span>
-        </div>
-      </article>
+        <article class="card">
+          <div class="exp-top">
+            <div>
+              <h3>Associate Software Engineer</h3>
+              <p class="exp-company">Analog Devices India Pvt. Ltd. · Bangalore, India</p>
+            </div>
+            <span class="date-badge">May 2022 – Apr 2025</span>
+          </div>
+          <ul>
+            <li>Engineered portable embedded applications across <strong>STM32F413ZHT6, STM32L552ZE, STM32H573ZI, and MAX32670</strong> MCUs through platform-agnostic peripheral drivers and custom toolchain scripts.</li>
+            <li>Set up <strong>ADE9178</strong> metrology DSP test infrastructure in Python to validate algorithms against IEC standards, interfacing an <strong>NI PXIe-4463 DAQ</strong> for low-voltage and low-current signal generation.</li>
+          </ul>
+          <div class="tags">
+            <span>Embedded C</span><span>Python</span><span>STM32</span><span>MAX32670</span><span>IEC Standards</span><span>NI PXIe-4463</span>
+          </div>
+        </article>
 
-      <article class="card" data-cat="ddv">
-        <div class="card-top">
-          <span class="badge ddv">Digital Design &amp; Verification</span>
-          <span class="date">Sept 2026 – Oct 2026</span>
+        <article class="card">
+          <div class="exp-top">
+            <div>
+              <h3>Embedded Software Intern</h3>
+              <p class="exp-company">Analog Devices India Pvt. Ltd. · Bangalore, India</p>
+            </div>
+            <span class="date-badge">Jul 2021 – May 2022</span>
+          </div>
+          <ul>
+            <li>Architected CI/CD pipelines for firmware builds, regression test execution, and release delivery.</li>
+            <li>Automated validation for the <strong>ADI EagleEye</strong> GUI, Android app, and cloud dashboard using Windows Application Driver, Selenium, Appium, and Robot Framework.</li>
+          </ul>
+          <div class="tags">
+            <span>CI/CD</span><span>Robot Framework</span><span>Selenium</span><span>Appium</span><span>Test Automation</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects">
+      <div class="section-header">
+        <h2>Selected Projects</h2>
+        <p>Hardware design, UVM verification, microarchitecture simulation, and cycle-accurate DSP engineering.</p>
+      </div>
+
+      <div class="filter-bar" role="tablist">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="ddv">Digital Design &amp; Verification</button>
+        <button class="filter-btn" data-filter="arch">Computer Architecture</button>
+        <button class="filter-btn" data-filter="dsp">Embedded &amp; DSP</button>
+      </div>
+
+      <div class="projects-grid">
+        <article class="card project-card" data-category="ddv">
+          <div>
+            <div class="project-meta">
+              <span class="cat-pill">Digital Design</span>
+              <span class="date-badge">Oct 2026</span>
+            </div>
+            <h3>Canny Edge Detector Integrated with System Bus, Memory &amp; UART</h3>
+            <ul>
+              <li>Integrated a Verilog-based Canny edge detector accelerator with a custom system bus, SRAM memory, and UART transmitter to form a complete image-processing SoC pipeline.</li>
+              <li>Modeled transistor-level schematics in LTspice targeting standard 180 nm process nodes for transient design verification.</li>
+              <li>Validated output accuracy at each pipeline stage (Gaussian smoothing, gradient, direction, NMS, hysteresis) against reference images, achieving <strong>98.28% pixel-level matching</strong> across five test images.</li>
+            </ul>
+          </div>
+          <div class="tags">
+            <span>Verilog</span><span>Synopsys Design Vision</span><span>LTspice</span><span>180 nm</span><span>UART</span>
+          </div>
+        </article>
+
+        <article class="card project-card" data-category="ddv">
+          <div>
+            <div class="project-meta">
+              <span class="cat-pill">Verification</span>
+              <span class="date-badge">Sept 2026 – Oct 2026</span>
+            </div>
+            <h3>HTAX Verification Project</h3>
+            <ul>
+              <li>Authored a UVM testbench verifying a 4-port HyperTransport Advanced X-Bar (HTAX) architecture.</li>
+              <li>Formulated SystemVerilog Assertions (SVA) validating concurrent TX/RX interface transactions, evaluating grant mechanisms, and testing the minimum-latency feature.</li>
+              <li>Executed functional coverage models integrating constrained-random sequences, achieving <strong>100% verification closure</strong>.</li>
+            </ul>
+          </div>
+          <div class="tags">
+            <span>SystemVerilog</span><span>UVM</span><span>SVA</span><span>Functional Coverage</span>
+          </div>
+        </article>
+
+        <article class="card project-card" data-category="arch">
+          <div>
+            <div class="project-meta">
+              <span class="cat-pill">Architecture</span>
+              <span class="date-badge">Oct 2026</span>
+            </div>
+            <h3>Dynamic Cache Replacement Policy Simulator</h3>
+            <ul>
+              <li>Implemented LIP, BIP, and DIP as custom C++ replacement modules in the ChampSim simulator across 5 real-world workloads, each over 100M instructions following a 25M-instruction warmup.</li>
+              <li>Achieved up to <strong>+21.4% IPC speedup</strong> over baseline LRU using BIP and <strong>+15.0%</strong> using DIP.</li>
+              <li>Computed geometric-mean IPC speedup across all workloads, showing DIP (+0.45%) and BIP (+1.60%) outperformed LRU with no offline tuning required.</li>
+            </ul>
+          </div>
+          <div class="tags">
+            <span>ChampSim</span><span>C++</span><span>STL</span><span>Cache Policies</span>
+          </div>
+        </article>
+
+        <article class="card project-card" data-category="dsp">
+          <div>
+            <div class="project-meta">
+              <span class="cat-pill">Assembly &amp; DSP</span>
+              <span class="date-badge">Oct 2026</span>
+            </div>
+            <h3>Fixed-Point FIR DSP Engine &amp; Arithmetic Unit</h3>
+            <ul>
+              <li>Emulated FPU functionality on Intel 8086 by architecting a real-time 4-tap FIR filter pipeline using Q8 fixed-point arithmetic to process signed 16-bit data.</li>
+              <li>Slashed normalization latency from ~170 cycles (<code>IDIV</code>) and ~80 cycles (<code>SAR/RCR</code>) down to <strong>4 clock cycles</strong> by bypassing arithmetic shifts and exploiting direct <code>CL:BH</code> register extraction.</li>
+              <li>Exploited the <code>CBW</code> sign-extension instruction for instant arithmetic headroom management without branch overhead.</li>
+            </ul>
+          </div>
+          <div class="tags">
+            <span>Intel 8086 Assembly</span><span>Q8 Fixed-Point</span><span>FIR Filter</span>
+          </div>
+        </article>
+
+        <article class="card project-card" data-category="dsp">
+          <div>
+            <div class="project-meta">
+              <span class="cat-pill">Embedded DSP</span>
+              <span class="date-badge">Mar 2020 – Apr 2020</span>
+            </div>
+            <h3>Real-Time Hardware DSP Accelerator &amp; Profiling</h3>
+            <ul>
+              <li>Led a team of 3 to construct a real-time digital filtering testbed utilizing ADC, TIM, and DMA peripherals on an STM32F407 paired with an NI myDAQ for precision signal generation.</li>
+              <li>Developed firmware to synchronize timer-triggered ADC acquisitions and process block data via CMSIS-DSP Biquad IIR filters with zero CPU polling.</li>
+              <li>Improved efficiency by <strong>94%</strong>, reducing processing overhead from 250 to <strong>15 cycles/sample</strong> by transitioning from standard interrupt-driven ISRs to DMA block buffering.</li>
+            </ul>
+          </div>
+          <div class="tags">
+            <span>STM32F407</span><span>DMA</span><span>CMSIS-DSP</span><span>NI myDAQ</span><span>LabVIEW</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section id="skills">
+      <div class="section-header">
+        <h2>Skills &amp; Tools</h2>
+        <p>A hardware-to-software toolkit spanning RTL design, UVM verification, microarchitecture, and real-time embedded firmware.</p>
+      </div>
+
+      <div class="skills-grid">
+        <article class="card">
+          <div class="skill-head">
+            <span class="skill-num">01</span>
+            <div>
+              <h3>Languages</h3>
+              <p>HDL, systems programming, and automation</p>
+            </div>
+          </div>
+          <ul>
+            <li>C, Embedded C, C++ (STL)</li>
+            <li>Verilog, SystemVerilog, SystemC</li>
+            <li>Python (test infrastructure &amp; scripting)</li>
+            <li>Intel 8086 Assembly</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="skill-head">
+            <span class="skill-num">02</span>
+            <div>
+              <h3>Digital Design &amp; Verification</h3>
+              <p>RTL, assertions, and simulation</p>
+            </div>
+          </div>
+          <ul>
+            <li>UVM, SystemVerilog Assertions (SVA), Formal Verification</li>
+            <li>RTL Design, SoC Bus &amp; Memory Integration</li>
+            <li>Synopsys Design Vision, VCS, Cadence Xcelium</li>
+            <li>ModelSim, LTspice (180 nm transistor modeling)</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="skill-head">
+            <span class="skill-num">03</span>
+            <div>
+              <h3>Embedded &amp; RTOS</h3>
+              <p>Deterministic firmware and DSP</p>
+            </div>
+          </div>
+          <ul>
+            <li>Bare-metal firmware, FreeRTOS, Zephyr RTOS</li>
+            <li>ARM Cortex-M (STM32F4/L5/H5, MAX32670)</li>
+            <li>ADC, TIM, DMA, UART, SPI, I2C, CMSIS-DSP</li>
+            <li>Fixed-point DSP &amp; metrology algorithms</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="skill-head">
+            <span class="skill-num">04</span>
+            <div>
+              <h3>Architecture &amp; Validation</h3>
+              <p>Performance modeling &amp; CI/CD</p>
+            </div>
+          </div>
+          <ul>
+            <li>ChampSim cache &amp; microarchitecture simulation</li>
+            <li>NI PXIe-4463 DAQ, NI myDAQ, LabVIEW, ADI ACE</li>
+            <li>CI/CD pipelines, Git, custom toolchain scripts</li>
+            <li>Robot Framework, Selenium, Appium</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== EDUCATION ===== -->
+    <section id="education">
+      <div class="section-header">
+        <h2>Education</h2>
+      </div>
+
+      <div class="edu-grid">
+        <article class="card">
+          <div class="exp-top">
+            <div>
+              <h3>Texas A&amp;M University</h3>
+              <p class="edu-degree">Master of Science in Computer Engineering</p>
+            </div>
+            <span class="date-badge">Expected May 2028</span>
+          </div>
+          <p class="edu-loc">College Station, TX</p>
+          <p class="course-title">Relevant Coursework</p>
+          <ul class="course-pills">
+            <li>Computer Architecture</li>
+            <li>Advanced Digital Systems Design</li>
+            <li>Intro to Hardware Design Verification</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="exp-top">
+            <div>
+              <h3>Koneru Lakshmaiah Education Foundation</h3>
+              <p class="edu-degree">B.Tech in Electronics and Communication Engineering</p>
+            </div>
+            <span class="date-badge">May 2018 – May 2022</span>
+          </div>
+          <p class="edu-loc">Andhra Pradesh, India · <strong>GPA: 3.97 / 4.00</strong></p>
+          <p class="course-title">Relevant Coursework</p>
+          <ul class="course-pills">
+            <li>Digital System Design</li>
+            <li>Embedded Controllers</li>
+            <li>Computer Organization &amp; Architecture</li>
+            <li>Analog Electronic Circuit Design</li>
+            <li>Digital Signal Processing</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact">
+      <div class="card contact-box">
+        <h2>Get in Touch</h2>
+        <p>
+          Interested in collaborating on ASIC design, hardware verification, computer architecture, or embedded firmware—or discussing Summer 2027 internship opportunities? Feel free to reach out.
+        </p>
+        <div class="contact-links">
+          <a href="mailto:your.email@tamu.edu" class="btn btn-primary">Email Me</a>
+          <a href="https://github.com/ganjiwilliam" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub ↗</a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">LinkedIn ↗</a>
         </div>
-        <h3>HTAX Verification Project</h3>
-        <p class="blurb">UVM testbench and assertion suite for a 4-port HyperTransport Advanced X-Bar.</p>
-        <ul>
-          <li>Authored a UVM testbench verifying a 4-port HyperTransport Advanced X-Bar (HTAX) architecture [1].</li>
-          <li>Formulated SystemVerilog Assertions validating concurrent TX/RX interface transactions, evaluating grant
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 William Ganji · Computer Engineering Portfolio</p>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const navMenu = document.getElementById('navMenu');
+    menuBtn.addEventListener('click', () => navMenu.classList.toggle('open'));
+    navMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => navMenu.classList.remove('open'));
+    });
+
+    // Project category filtering
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+
+        projectCards.forEach(card => {
+          const match = filter === 'all' || card.dataset.category === filter;
+          card.style.display = match ? 'flex' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
