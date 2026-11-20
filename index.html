@@ -627,111 +627,138 @@
     </section>
 
     <!-- ===== PROJECTS ===== -->
-    <section id="projects">
-      <div class="section-header">
-        <h2>Selected Projects</h2>
-        <p>Hardware design, UVM verification, microarchitecture simulation, and cycle-accurate DSP engineering.</p>
+<section id="projects">
+  <div class="section-header">
+    <h2>Selected Projects</h2>
+    <p>Hardware design, UVM verification, microarchitecture simulation, and cycle-accurate DSP engineering.</p>
+  </div>
+  <div class="filter-bar" role="tablist">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="ddv">Digital Design &amp; Verification</button>
+    <button class="filter-btn" data-filter="arch">Computer Architecture</button>
+    <button class="filter-btn" data-filter="dsp">Embedded &amp; DSP</button>
+  </div>
+  <div class="projects-grid">
+    <article class="card project-card" data-category="ddv">
+      <div>
+        <div class="project-meta">
+          <span class="cat-pill">Digital Design</span>
+        </div>
+        <h3>Canny Edge Detector Integrated with System Bus, Memory &amp; UART</h3>
+        <ul>
+          <li>Integrated a Verilog-based Canny edge detector accelerator with a custom system bus, SRAM memory, and UART transmitter to form a complete image-processing SoC pipeline.</li>
+          <li>Modeled transistor-level schematics in LTspice targeting standard 180 nm process nodes for transient design verification.</li>
+          <li>Validated output accuracy at each pipeline stage (Gaussian smoothing, gradient, direction, NMS, hysteresis) against reference images, achieving <strong>98.28% pixel-level matching</strong> across five test images.</li>
+        </ul>
       </div>
-
-      <div class="filter-bar" role="tablist">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="ddv">Digital Design &amp; Verification</button>
-        <button class="filter-btn" data-filter="arch">Computer Architecture</button>
-        <button class="filter-btn" data-filter="dsp">Embedded &amp; DSP</button>
+      <div class="tags">
+        <span>Verilog</span><span>Synopsys Design Vision</span><span>LTspice</span><span>180 nm</span><span>UART</span>
       </div>
+    </article>
 
-      <div class="projects-grid">
-        <article class="card project-card" data-category="ddv">
-          <div>
-            <div class="project-meta">
-              <span class="cat-pill">Digital Design</span>
-              <span class="date-badge">Oct 2026</span>
-            </div>
-            <h3>Canny Edge Detector Integrated with System Bus, Memory &amp; UART</h3>
-            <ul>
-              <li>Integrated a Verilog-based Canny edge detector accelerator with a custom system bus, SRAM memory, and UART transmitter to form a complete image-processing SoC pipeline.</li>
-              <li>Modeled transistor-level schematics in LTspice targeting standard 180 nm process nodes for transient design verification.</li>
-              <li>Validated output accuracy at each pipeline stage (Gaussian smoothing, gradient, direction, NMS, hysteresis) against reference images, achieving <strong>98.28% pixel-level matching</strong> across five test images.</li>
-            </ul>
-          </div>
-          <div class="tags">
-            <span>Verilog</span><span>Synopsys Design Vision</span><span>LTspice</span><span>180 nm</span><span>UART</span>
-          </div>
-        </article>
-
-        <article class="card project-card" data-category="ddv">
-          <div>
-            <div class="project-meta">
-              <span class="cat-pill">Verification</span>
-              <span class="date-badge">Sept 2026 – Oct 2026</span>
-            </div>
-            <h3>HTAX Verification Project</h3>
-            <ul>
-              <li>Authored a UVM testbench verifying a 4-port HyperTransport Advanced X-Bar (HTAX) architecture.</li>
-              <li>Formulated SystemVerilog Assertions (SVA) validating concurrent TX/RX interface transactions, evaluating grant mechanisms, and testing the minimum-latency feature.</li>
-              <li>Executed functional coverage models integrating constrained-random sequences, achieving <strong>100% verification closure</strong>.</li>
-            </ul>
-          </div>
-          <div class="tags">
-            <span>SystemVerilog</span><span>UVM</span><span>SVA</span><span>Functional Coverage</span>
-          </div>
-        </article>
-
-        <article class="card project-card" data-category="arch">
-          <div>
-            <div class="project-meta">
-              <span class="cat-pill">Architecture</span>
-              <span class="date-badge">Oct 2026</span>
-            </div>
-            <h3>Dynamic Cache Replacement Policy Simulator</h3>
-            <ul>
-              <li>Implemented LIP, BIP, and DIP as custom C++ replacement modules in the ChampSim simulator across 5 real-world workloads, each over 100M instructions following a 25M-instruction warmup.</li>
-              <li>Achieved up to <strong>+21.4% IPC speedup</strong> over baseline LRU using BIP and <strong>+15.0%</strong> using DIP.</li>
-              <li>Computed geometric-mean IPC speedup across all workloads, showing DIP (+0.45%) and BIP (+1.60%) outperformed LRU with no offline tuning required.</li>
-            </ul>
-          </div>
-          <div class="tags">
-            <span>ChampSim</span><span>C++</span><span>STL</span><span>Cache Policies</span>
-          </div>
-        </article>
-
-        <article class="card project-card" data-category="dsp">
-          <div>
-            <div class="project-meta">
-              <span class="cat-pill">Assembly &amp; DSP</span>
-              <span class="date-badge">Oct 2026</span>
-            </div>
-            <h3>Fixed-Point FIR DSP Engine &amp; Arithmetic Unit</h3>
-            <ul>
-              <li>Emulated FPU functionality on Intel 8086 by architecting a real-time 4-tap FIR filter pipeline using Q8 fixed-point arithmetic to process signed 16-bit data.</li>
-              <li>Slashed normalization latency from ~170 cycles (<code>IDIV</code>) and ~80 cycles (<code>SAR/RCR</code>) down to <strong>4 clock cycles</strong> by bypassing arithmetic shifts and exploiting direct <code>CL:BH</code> register extraction.</li>
-              <li>Exploited the <code>CBW</code> sign-extension instruction for instant arithmetic headroom management without branch overhead.</li>
-            </ul>
-          </div>
-          <div class="tags">
-            <span>Intel 8086 Assembly</span><span>Q8 Fixed-Point</span><span>FIR Filter</span>
-          </div>
-        </article>
-
-        <article class="card project-card" data-category="dsp">
-          <div>
-            <div class="project-meta">
-              <span class="cat-pill">Embedded DSP</span>
-              <span class="date-badge">Mar 2020 – Apr 2020</span>
-            </div>
-            <h3>Real-Time Hardware DSP Accelerator &amp; Profiling</h3>
-            <ul>
-              <li>Led a team of 3 to construct a real-time digital filtering testbed utilizing ADC, TIM, and DMA peripherals on an STM32F407 paired with an NI myDAQ for precision signal generation.</li>
-              <li>Developed firmware to synchronize timer-triggered ADC acquisitions and process block data via CMSIS-DSP Biquad IIR filters with zero CPU polling.</li>
-              <li>Improved efficiency by <strong>94%</strong>, reducing processing overhead from 250 to <strong>15 cycles/sample</strong> by transitioning from standard interrupt-driven ISRs to DMA block buffering.</li>
-            </ul>
-          </div>
-          <div class="tags">
-            <span>STM32F407</span><span>DMA</span><span>CMSIS-DSP</span><span>NI myDAQ</span><span>LabVIEW</span>
-          </div>
-        </article>
+    <article class="card project-card" data-category="ddv">
+      <div>
+        <div class="project-meta">
+          <span class="cat-pill">Verification</span>
+        </div>
+        <h3>HTAX Verification Project</h3>
+        <ul>
+          <li>Authored a UVM testbench verifying a 4-port HyperTransport Advanced X-Bar (HTAX) architecture.</li>
+          <li>Formulated SystemVerilog Assertions (SVA) validating concurrent TX/RX interface transactions, evaluating grant mechanisms, and testing the minimum-latency feature.</li>
+          <li>Executed functional coverage models integrating constrained-random sequences, achieving <strong>100% verification closure</strong>.</li>
+        </ul>
       </div>
-    </section>
+      <div class="tags">
+        <span>SystemVerilog</span><span>UVM</span><span>SVA</span><span>Functional Coverage</span>
+      </div>
+    </article>
+
+    <article class="card project-card" data-category="arch">
+      <div>
+        <div class="project-meta">
+          <span class="cat-pill">Architecture</span>
+        </div>
+        <h3>Dynamic Cache Replacement Policy Simulator</h3>
+        <ul>
+          <li>Implemented LIP, BIP, and DIP as custom C++ replacement modules in the ChampSim simulator across 5 real-world workloads, each over 100M instructions following a 25M-instruction warmup.</li>
+          <li>Achieved up to <strong>+21.4% IPC speedup</strong> over baseline LRU using BIP and <strong>+15.0%</strong> using DIP.</li>
+          <li>Computed geometric-mean IPC speedup across all workloads, showing DIP (+0.45%) and BIP (+1.60%) outperformed LRU with no offline tuning required.</li>
+        </ul>
+      </div>
+      <div class="tags">
+        <span>ChampSim</span><span>C++</span><span>STL</span><span>Cache Policies</span>
+      </div>
+    </article>
+
+    <article class="card project-card" data-category="dsp">
+      <div>
+        <div class="project-meta">
+          <span class="cat-pill">Embedded Systems</span>
+          <a href="https://github.com/ganjiwilliam/energy-board-support" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: none; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;">GitHub ↗</a>
+        </div>
+        <h3>Energy Board Support Drivers</h3>
+        <ul>
+          <li>Analog Devices Inc. energy board support package designed to make it easy to develop examples that can run on multiple boards.</li>
+          <li>Relies on hardware abstraction layers (HALs) and MCU drivers supplied by the MCU vendor; requires ensuring the appropriate drivers are included in the application.</li>
+          <li>Supported boards: <strong>ADI EVAL-ADEMA127 Board</strong> and <strong>ADI EVAL-ADE9178 Board</strong>.</li>
+        </ul>
+      </div>
+      <div class="tags">
+        <span>Embedded C</span><span>HAL</span><span>EVAL-ADEMA127</span><span>EVAL-ADE9178</span>
+      </div>
+    </article>
+
+    <article class="card project-card" data-category="dsp">
+      <div>
+        <div class="project-meta">
+          <span class="cat-pill">Embedded Systems</span>
+        </div>
+        <h3>ADEMA127 ACE Firmware</h3>
+        <ul>
+          <li>Analog Devices Inc. ADEMA127 ACE Firmware providing communication with <strong>ADI ACE</strong> for evaluating metering ADCs.</li>
+          <li>Uses the <strong>IIO protocol</strong> for communicating with the host device.</li>
+        </ul>
+      </div>
+      <div class="tags">
+        <span>Embedded C</span><span>ADEMA127</span><span>ADI ACE</span><span>IIO Protocol</span>
+      </div>
+    </article>
+
+    <article class="card project-card" data-category="dsp">
+      <div>
+        <div class="project-meta">
+          <span class="cat-pill">Assembly &amp; DSP</span>
+        </div>
+        <h3>Fixed-Point FIR DSP Engine &amp; Arithmetic Unit</h3>
+        <ul>
+          <li>Emulated FPU functionality on Intel 8086 by architecting a real-time 4-tap FIR filter pipeline using Q8 fixed-point arithmetic to process signed 16-bit data.</li>
+          <li>Slashed normalization latency from ~170 cycles (<code>IDIV</code>) and ~80 cycles (<code>SAR/RCR</code>) down to <strong>4 clock cycles</strong> by bypassing arithmetic shifts and exploiting direct <code>CL:BH</code> register extraction.</li>
+          <li>Exploited the <code>CBW</code> sign-extension instruction for instant arithmetic headroom management without branch overhead.</li>
+        </ul>
+      </div>
+      <div class="tags">
+        <span>Intel 8086 Assembly</span><span>Q8 Fixed-Point</span><span>FIR Filter</span>
+      </div>
+    </article>
+
+    <article class="card project-card" data-category="dsp">
+      <div>
+        <div class="project-meta">
+          <span class="cat-pill">Embedded DSP</span>
+        </div>
+        <h3>Real-Time Hardware DSP Accelerator &amp; Profiling</h3>
+        <ul>
+          <li>Led a team of 3 to construct a real-time digital filtering testbed utilizing ADC, TIM, and DMA peripherals on an STM32F407 paired with an NI myDAQ for precision signal generation.</li>
+          <li>Developed firmware to synchronize timer-triggered ADC acquisitions and process block data via CMSIS-DSP Biquad IIR filters with zero CPU polling.</li>
+          <li>Improved efficiency by <strong>94%</strong>, reducing processing overhead from 250 to <strong>15 cycles/sample</strong> by transitioning from standard interrupt-driven ISRs to DMA block buffering.</li>
+        </ul>
+      </div>
+      <div class="tags">
+        <span>STM32F407</span><span>DMA</span><span>CMSIS-DSP</span><span>NI myDAQ</span><span>LabVIEW</span>
+      </div>
+    </article>
+  </div>
+</section>
 
     <!-- ===== SKILLS ===== -->
     <section id="skills">
